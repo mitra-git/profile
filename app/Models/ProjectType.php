@@ -30,4 +30,9 @@ class ProjectType extends Model
     {
         return $this->belongsTo(Project::class, 'id_project');
     }
+
+    public function projectTypeImages()
+    {
+        return $this->hasMany(ProjectTypeImage::class, 'id_project_type');
+    }
 }

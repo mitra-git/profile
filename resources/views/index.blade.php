@@ -213,7 +213,7 @@ use Illuminate\Support\Str;
                     style="background: linear-gradient(to bottom, rgba(26, 26, 26, 0.5) 0%, rgba(33, 33, 33, 0.5) 100%), url('{{env('APP_URL')}}{{$s->image}}'); background-size: cover">
                     <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-left"
                         style="place-content: center;">
-                        <div class="col-lg-8 align-self-end"
+                        <div class="col-lg-8 align-self-end" data-aos="fade-right" data-aos-duration="1000"
                             style="background-color: rgba(0, 0, 0, 0.575);padding-top:10rem;padding-bottom:10rem">
                             <div style="padding-left:15rem">
                                 <h1 class="text-white fw-bold" style="text-transform:uppercase">{{ $s->title }}</h1>

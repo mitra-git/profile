@@ -23,7 +23,7 @@
 </style>
 
 
-<div style="height: 40%; min-height: 30%; background-image: url('assets/img/contact.jpg'); background-size: cover;">
+<div style="height: 50%; min-height: 40%; background-image: url('assets/img/contact.jpg'); background-size: cover;">
 </div>
 <div style="background-color:#eeeeef">
     <div class="pt-3">
