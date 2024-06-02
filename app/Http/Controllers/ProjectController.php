@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        $projectImages = ProjectImage::where('id_project', $id)->get();
+        $projectImages = ProjectImage::where('id_project_image', $id)->get();
         $projectType = ProjectType::all();
 
         return view('projects.show', compact('project', 'projectImages', 'projectType'));

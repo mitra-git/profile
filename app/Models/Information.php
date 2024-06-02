@@ -17,6 +17,7 @@ class Information extends Model
         'logo_company',
         'video',
         'name',
+        'email',
         'image',
         'description',
         'address',

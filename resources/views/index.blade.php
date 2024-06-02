@@ -363,7 +363,7 @@ use Illuminate\Support\Str;
         </div>
     </section>
 
-    <footer style="background:#f37321">
+    <footer style="background:#f37321" id="contactForm">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -424,7 +424,8 @@ use Illuminate\Support\Str;
                                     {{ session('error') }}
                                 </div>
                                 @endif
-                                <form method="POST" class="row g-3" {{ route('store-contact')}} enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('store-contact') }}" class="row g-3"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-lg-12">
                                         <div class="form-floating mb-1">
@@ -441,10 +442,23 @@ use Illuminate\Support\Str;
                                             <input class="form-control" id="handphone" name="handphone" type="phone"
                                                 placeholder="62 987 654 321" data-sb-validations="required,handphone"
                                                 required />
-                                            <label for="handphone" class="fw-bold" style="color:#495057">Handphone</label>
+                                            <label for="handphone" class="fw-bold"
+                                                style="color:#495057">Handphone</label>
                                             <div class="invalid-feedback" data-sb-feedback="handphone:required">A
                                                 handphone is required.</div>
                                             <div class="invalid-feedback" data-sb-feedback="handphone:email">Handphone
+                                                is not valid.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control" id="email" name="email" type="email"
+                                                placeholder="example@gmail.com" data-sb-validations="required,email"
+                                                required />
+                                            <label for="email" class="fw-bold" style="color:#495057">Email</label>
+                                            <div class="invalid-feedback" data-sb-feedback="email:required">An
+                                                email is required.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="email:email">Email
                                                 is not valid.</div>
                                         </div>
                                     </div>

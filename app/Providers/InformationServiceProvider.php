@@ -23,9 +23,8 @@ class InformationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Using a view composer to share $information with all views
         View::composer('*', function ($view) {
-            $information = Information::first(); // You can adjust this to fetch the appropriate information
+            $information = Information::first();
             $projects = Project::all();
             $view->with(['information' => $information, 'projects' => $projects]);
         });

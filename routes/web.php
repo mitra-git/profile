@@ -29,6 +29,7 @@ Route::get('/test-email', [ContactController::class, 'testEmail'])->name('test.e
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/contact_us', [ContactController::class, 'index'])->name('contact.us');
 Route::post('/store', [ContactController::class, 'store'])->name('store-contact');
+Route::post('/footer-form', [ContactController::class, 'storeAll'])->name('footerForm.store');
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
