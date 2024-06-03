@@ -215,14 +215,14 @@ use Illuminate\Support\Str;
     <section class="page-section pb-3 pt-3" id="developed_by" style="background-color:#eeeeef">
         <div class="container">
             <div class="row" style="align-items: center;">
-                <div class="col-sm-4">
+                <div class="col-sm-4 py-2">
                     <h3 class="h5 fw-bold mb-2">Developed & Constructed by :</h3>
                 </div>
-                <div class="col-sm-4">
-                    <img src="{{asset('assets/img/Mup.png')}}" style="width:100%" />
+                <div class="col-sm-4 py-2">
+                    <img src="{{asset('assets/img/Mup.png')}}" style="width:90%" />
                 </div>
-                <div class="col-sm-4">
-                    <img src="{{asset('assets/img/Muk.png')}}" style="width:100%" />
+                <div class="col-sm-4 py-2">
+                    <img src="{{asset('assets/img/Muk.png')}}" style="width:85%" />
                 </div>
             </div>
         </div>
@@ -338,9 +338,9 @@ use Illuminate\Support\Str;
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <textarea class="form-control" name="message" id="message" type="text"
-                                                placeholder="Enter your message here..." style="height: 10rem;"
+                                                placeholder="Enter your message here..." style="height: 7rem;"
                                                 data-sb-validations="required" required></textarea>
                                             <label for="message" class="fw-bold" style="color:#495057">Message</label>
                                             <div class="invalid-feedback" data-sb-feedback="message:required">A message

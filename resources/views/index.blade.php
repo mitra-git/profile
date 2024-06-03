@@ -37,6 +37,18 @@
 
 
     <style>
+        .for-padding-left {
+            padding-left: 15rem;
+        }
+
+        @media (max-width: 760px) {
+            .for-padding-left {
+                padding-left: 3rem;
+                padding-right: 3rem;
+                text-align: center;
+            }
+        }
+
         .btn:hover {
             color: #f37321 !important;
         }
@@ -155,6 +167,31 @@
             color: #111111 !important;
             opacity: 0 !important;
         }
+
+        .image-container {
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+
+        .overlay-text {
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -215,7 +252,7 @@ use Illuminate\Support\Str;
                         style="place-content: center;">
                         <div class="col-lg-8 align-self-end" data-aos="fade-right" data-aos-duration="1000"
                             style="background-color: rgba(0, 0, 0, 0.575);padding-top:10rem;padding-bottom:10rem">
-                            <div style="padding-left:15rem">
+                            <div class="for-padding-left">
                                 <h1 class="text-white fw-bold" style="text-transform:uppercase">{{ $s->title }}</h1>
                                 <a href="{{ route('news.show', $s->id) }}" class="btn btn-bla text-white mt-2"
                                     style="background-color:#f37321;border-radius:0;font-size:15pt">More Info</a>
@@ -305,33 +342,6 @@ use Illuminate\Support\Str;
                             </a>
                         </div>
                         @endforeach
-
-                        <style>
-                            .image-container {
-                                position: relative;
-                            }
-
-                            .overlay {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                background-color: rgba(0, 0, 0, 0.8);
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                color: white;
-                                font-size: 1.5rem;
-                                text-align: center;
-                                padding: 10px;
-                                text-transform: uppercase;
-                            }
-
-                            .overlay-text {
-                                padding: 10px;
-                            }
-                        </style>
                     </div>
                 </div>
             </div>
@@ -350,14 +360,14 @@ use Illuminate\Support\Str;
     <section class="page-section pb-3 pt-3" id="developed_by" style="background-color:#eeeeef">
         <div class="container">
             <div class="row" style="align-items: center;">
-                <div class="col-sm-4">
+                <div class="col-sm-4 py-2">
                     <h3 class="h5 fw-bold mb-2">Developed & Constructed by :</h3>
                 </div>
-                <div class="col-sm-4">
-                    <img src="{{asset('assets/img/Mup.png')}}" style="width:100%" />
+                <div class="col-sm-4 py-2">
+                    <img src="{{asset('assets/img/Mup.png')}}" style="width:90%" />
                 </div>
-                <div class="col-sm-4">
-                    <img src="{{asset('assets/img/Muk.png')}}" style="width:100%" />
+                <div class="col-sm-4 py-2">
+                    <img src="{{asset('assets/img/Muk.png')}}" style="width:85%" />
                 </div>
             </div>
         </div>
@@ -410,7 +420,7 @@ use Illuminate\Support\Str;
                             </div>
                         </div>
                         <div class="col-sm-7 my-5">
-                            <h3 class="text-white fw-bold my-0">Contact Form :</h3>
+                            <h3 class="text-white pl-2 pb-0 fw-bold my-0">Contact Form :</h3>
                             <div class="row" style="place-content: center">
                                 @if(session('success'))
                                 <div class="alert alert-success m-2"
@@ -424,11 +434,11 @@ use Illuminate\Support\Str;
                                     {{ session('error') }}
                                 </div>
                                 @endif
-                                <form method="POST" action="{{ route('store-contact') }}" class="row g-3"
+                                <form method="POST" action="{{ route('store-contact') }}" class="row g-3 pt-0 mt-0"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <input class="form-control" id="name" name="name" type="text"
                                                 placeholder="Enter your Name..." data-sb-validations="required"
                                                 required />
@@ -438,7 +448,7 @@ use Illuminate\Support\Str;
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <input class="form-control" id="handphone" name="handphone" type="phone"
                                                 placeholder="62 987 654 321" data-sb-validations="required,handphone"
                                                 required />
@@ -451,7 +461,7 @@ use Illuminate\Support\Str;
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <input class="form-control" id="email" name="email" type="email"
                                                 placeholder="example@gmail.com" data-sb-validations="required,email"
                                                 required />
@@ -463,7 +473,7 @@ use Illuminate\Support\Str;
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <input class="form-control" id="subject" name="subject" type="text"
                                                 placeholder="Enter your subject..." data-sb-validations="required"
                                                 required />
@@ -473,9 +483,9 @@ use Illuminate\Support\Str;
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-floating mb-1">
+                                        <div class="form-floating">
                                             <textarea class="form-control" name="message" id="message" type="text"
-                                                placeholder="Enter your message here..." style="height: 10rem;"
+                                                placeholder="Enter your message here..." style="height: 7rem;"
                                                 data-sb-validations="required" required></textarea>
                                             <label for="message" class="fw-bold" style="color:#495057">Message</label>
                                             <div class="invalid-feedback" data-sb-feedback="message:required">A message
