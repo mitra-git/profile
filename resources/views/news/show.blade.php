@@ -16,13 +16,39 @@
         filter: alpha(Opacity=80);
         opacity: .8;
         display: none;
+    }
+
+    .video-responsive {
+        position: relative;
+        padding-bottom: 56.25%;
+        /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+    }
+
+    .video-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <div style="background-color:#eeeeef">
     <div class="pb-4" style="padding-top:10rem">
         <div class="container">
             <div class="col-sm-12">
-                <img src="{{env('APP_URL')}}{{$news->image}}" style="width:100%;height:600px;object-fit:cover" />
+                <div id="video_container" class="video-responsive">
+                    @if($news->link_video)
+                    {!! $news->link_video !!}
+                    @else
+                    <img id="video_display" class="object-contain items-center"
+                        style="width:100%;height:100%;object-fit:cover" src="{{ asset('assets/img/no-video.png') }}">
+                    @endif
+                </div>
             </div>
             <div class="col-sm-12 pt-5">
                 <div class="text-center mx-auto py-3">

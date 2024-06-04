@@ -16,6 +16,25 @@
         filter: alpha(Opacity=80);
         opacity: .8;
         display: none;
+    }
+
+    .video-responsive {
+        position: relative;
+        padding-bottom: 56.25%;
+        /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+    }
+
+    .video-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <div
@@ -32,8 +51,17 @@
                         <hr class="divider divider-black" />
                     </div>
                     <div class="row gx-4 gx-lg-5">
-                        <img class="img-fluid" style="object-fit: cover;height:100%!important"
-                            src="{{env('APP_URL')}}{{$information->image}}" alt="..." />
+                        <div class="col-sm-12">
+                            <div id="video_container" class="video-responsive">
+                                @if($information->video)
+                                {!! $information->video !!}
+                                @else
+                                <img id="video_display" class="object-contain items-center"
+                                    style="width:20rem;height:10rem;object-fit:cover"
+                                    src="{{ asset('assets/img/no-video.png') }}">
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="text-center mx-auto py-3">
