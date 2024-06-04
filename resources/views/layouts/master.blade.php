@@ -316,7 +316,7 @@ use Illuminate\Support\Str;
                                 <form method="POST" action="{{ route('footerForm.store') }}" class="row g-2 pt-2 mt-2"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="form-floating">
                                             <input class="form-control form-control-sm" id="name" name="name"
                                                 type="text" placeholder="Enter your Name..."
@@ -327,7 +327,7 @@ use Illuminate\Support\Str;
                                                 required.</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="form-floating">
                                             <input class="form-control form-control-sm" id="handphone" name="handphone"
                                                 type="phone" placeholder="62 987 654 321"
@@ -340,7 +340,7 @@ use Illuminate\Support\Str;
                                                 is not valid.</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="form-floating">
                                             <input class="form-control form-control-sm" id="email" name="email"
                                                 type="email" placeholder="example@gmail.com"
@@ -353,7 +353,7 @@ use Illuminate\Support\Str;
                                                 valid.</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="form-floating">
                                             <input class="form-control form-control-sm" id="subject" name="subject"
                                                 type="text" placeholder="Enter your subject..."
@@ -364,7 +364,7 @@ use Illuminate\Support\Str;
                                                 is required.</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="form-floating">
                                             <textarea class="form-control form-control-sm" name="message" id="message"
                                                 type="text" placeholder="Enter your message here..."
@@ -376,7 +376,7 @@ use Illuminate\Support\Str;
                                                 is required.</div>
                                         </div>
                                     </div>
-                                    <div class="col-12 d-grid">
+                                    <div class="col-6 d-grid">
                                         <button class="btn btn-sm py-1 fw-bold"
                                             style="background-color:white;color:#f37321;width:50%" id="submitButton"
                                             type="submit"><span>SEND MESSAGE</span></button>
