@@ -53,7 +53,7 @@
                     </div>
                     <div class="row gx-4 gx-lg-5">
                         <div class="col-lg-5 justify-content-center">
-                            <img class="img-fluid" style="object-fit: cover;height:35rem!important"
+                            <img class="img-fluid pb-3" style="object-fit: cover;height:35rem!important;width: 100%;"
                                 src="{{env('APP_URL')}}{{$project->image}}" alt="..." />
                         </div>
                         <div class="col-lg-7 py-5 py-md-0">
@@ -149,12 +149,19 @@
             autoplaySpeed: 2000,
             responsive: [
                 {
-                    breakpoint: 768, // You can set this to the breakpoint you want for mobile
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
+            breakpoint: 1024, // You can adjust this breakpoint as needed
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 768, // Mobile breakpoint
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
             ]
         });
 

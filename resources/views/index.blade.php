@@ -56,14 +56,20 @@
         }
 
         .for-padding-left {
-            padding-left: 15rem;
+            width: 66.67%;
         }
+
+        .mobile-only {}
+
+
 
         @media (max-width: 760px) {
             .for-padding-left {
-                padding-left: 3rem;
-                padding-right: 3rem;
-                text-align: center;
+                width: 100% !important;
+            }
+
+            .mobile-only {
+                text-align: center !important;
             }
         }
 
@@ -89,22 +95,32 @@
             /* Ensure the pseudo-element is behind the navbar content */
         }
 
-        .flag-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/1280px-Flag_of_Indonesia.svg.png');
-            background-size: cover;
-            background-position: center;
+        .background-colored {
+            background-color: rgba(0, 0, 0, 0.575);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 55%;
+            /* 8/12 of the container's width */
+            z-index: 0;
+            /* Ensures that the background is behind the text */
         }
 
-        .flag-icon2 {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png');
-            background-size: cover;
-            background-position: center;
+        .carousel-item .container {
+            position: relative;
+            z-index: 1;
+            /* Ensures that the text is in front of the background */
+        }
+
+        .carousel-item .col-lg-8 {
+            padding: 2rem;
+            /* Adjust padding as needed */
+        }
+
+        .carousel-item .col-lg-8 .btn {
+            margin-top: 1rem;
+            /* Adjust margin as needed */
         }
 
         .dropdown-menu {
@@ -125,6 +141,32 @@
             max-height: 500px;
             opacity: 1;
             padding: 0.5rem 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .dropdown-menu {
+                max-width: 100%;
+                left: 10%;
+                border-radius: 5px;
+            }
+
+            .dropdown-menu .dropdown-item {
+                font-size: 1.2rem;
+            }
+
+            .nav-item.dropdown {
+                place-content: flex-start;
+            }
+
+            .navbar-nav .dropdown-menu {
+                position: static;
+                float: left !important;
+                width: 100%!important;
+            }
+
+            .dropdown-menu {
+                transform: none!important;
+            }
         }
 
         .overlayer {
@@ -232,7 +274,7 @@ use Illuminate\Support\Str;
     <nav class="navbar navbar-expand-lg navbar-light fixed-top pt-4 pb-3" id="mainNav" style="background-color:#f37321">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="/"><img src="{{env('APP_URL')}}{{$information->logo_header}}"
-                    style="max-width:150px;width:140px;" /></a>
+                    style="max-width:120px;width:100px;" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 style="border: none" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -268,15 +310,24 @@ use Illuminate\Support\Str;
                     style="background: linear-gradient(to bottom, rgba(26, 26, 26, 0.5) 0%, rgba(33, 33, 33, 0.5) 100%), url('{{env('APP_URL')}}{{$s->image}}'); background-size: cover">
                     <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-left"
                         style="place-content: center;">
-                        <div class="col-lg-8 align-self-end" data-aos="fade-right" data-aos-duration="1000"
-                            style="background-color: rgba(0, 0, 0, 0.575);padding-top:10rem;padding-bottom:10rem">
-                            <div class="for-padding-left">
-                                <h1 class="text-white fw-bold" style="text-transform:uppercase">{{ $s->title }}</h1>
-                                <a href="{{ route('news.show', $s->id) }}" class="btn btn-bla text-white mt-2"
-                                    style="background-color:#f37321;border-radius:0;font-size:15pt">More Info</a>
+                        <div class="col-12" style="position: relative;">
+                            <div class="background-colored for-padding-left"></div>
+                            <div class="container mobile-only" style="padding-top:3rem;padding-bottom:3rem;">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div data-aos="fade-right" data-aos-duration="1000">
+                                            <h1 class="text-white fw-bold" style="text-transform:uppercase;">{{ $s->title
+                                                }}</h1>
+                                            <a href="{{ route('news.show', $s->id) }}"
+                                                class="btn btn-bla text-white mt-2"
+                                                style="background-color:#f37321;border-radius:0;font-size:15pt">More
+                                                Info</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4">
                         </div>
                     </div>
                 </header>
@@ -295,13 +346,11 @@ use Illuminate\Support\Str;
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-6 py-5 py-md-0">
                     <p class="mb-4" style="text-align: justify">{{$information->description}}</p>
-                    <a href="/about" class="btn btn-bla text-white mt-2"
+                    <a href="/about" class="btn btn-bla text-white mt-2 mb-4"
                         style="background-color:#f37321;border-radius:0;font-size:15pt">More
                         Info</a>
                 </div>
                 <div class="col-lg-6 justify-content-center">
-                    {{-- <img class="img-fluid" style="object-fit: cover;height:100%!important"
-                        src="{{env('APP_URL')}}{{$information->image}}" alt="..." /> --}}
                     <div id="video_container" class="video-responsive">
                         @if($information->video)
                         {!! $information->video !!}
@@ -347,7 +396,7 @@ use Illuminate\Support\Str;
                 <div class="col-sm-12">
                     <div class="row" style="text-align: -webkit-center;">
                         @foreach ($news as $a)
-                        <div class="col-sm-4 py-3">
+                        <div class="col-lg-4 col-sm-4 col-md-6 py-3">
                             <a href="{{ route('news.show', $a->id) }}">
                                 <div class="card" style="width: 20rem; position: relative;">
                                     <div class="image-container" style="position: relative;">
@@ -379,7 +428,7 @@ use Illuminate\Support\Str;
         data-aos-duration="1000">
         <a title="Chat Whatsapp" href="{{$information->link_wa}}" target="_blank"
             class="d-inline-block rounded-full transition-all transform hover:scale-110 hover:rotate-12">
-            <img class="object-cover object-center" style="width:100px;height:100px"
+            <img class="object-cover object-center" style="width:70px;height:70px"
                 src="{{ asset('assets/img/whatsapp.png') }}" alt="Saya mau pesan">
         </a>
     </div>
@@ -410,18 +459,15 @@ use Illuminate\Support\Str;
                             <div class="col-sm-12 px-3 pb-4">
                                 <p class="text-white fw-bold">{{$information->name}}</p>
                                 <table class="table table-borderless" style="border-color: transparent!important;">
-                                    <thead>
-                                        <tr>
-                                            <th style="align-content: center;"><i
-                                                    class="bi bi-geo-alt-fill text-white"></i></th>
-                                            <th class="text-white">{{$information->address}}</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="align-content: center;"><i
+                                            <td class="py-0"><i class="bi bi-geo-alt-fill text-white"></i></td>
+                                            <td class="text-white py-0">{{$information->address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0" style="align-content: center;"><i
                                                     class="bi bi-telephone-fill text-white"></i></td>
-                                            <td class="text-white">{{$information->phone}}</td>
+                                            <td class="text-white py-0">{{$information->phone}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -446,7 +492,7 @@ use Illuminate\Support\Str;
                                 </table>
                             </div>
                         </div>
-                        <div class="col-sm-7 my-5">
+                        <div class="col-sm-7 my-3">
                             <h3 class="text-white pl-2 pb-0 fw-bold my-0">Contact Form :</h3>
                             <div class="row" style="place-content: center">
                                 @if(session('success'))
@@ -568,7 +614,7 @@ function goToTop() {
 document.addEventListener("DOMContentLoaded", function () {
     var myCarousel = document.querySelector('#carouselExampleSlidesOnly')
     var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 3000, // Adjust the interval as needed (in milliseconds)
+        interval: 6000, // Adjust the interval as needed (in milliseconds)
         wrap: true
     })
 });

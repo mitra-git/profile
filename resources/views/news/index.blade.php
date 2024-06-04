@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                     <div class="row" style="text-align: -webkit-center;">
                         @foreach ($news as $a)
-                        <div class="col-sm-4 py-3">
+                        <div class="col-lg-4 col-sm-4 col-md-6 py-3">
                             <a href="{{ route('news.show', $a->id) }}">
                                 <div class="card" style="width: 20rem; position: relative;">
                                     <div class="image-container" style="position: relative;">

@@ -147,12 +147,19 @@
             autoplaySpeed: 2000,
             responsive: [
                 {
-                    breakpoint: 768, // You can set this to the breakpoint you want for mobile
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
+            breakpoint: 1024, // You can adjust this breakpoint as needed
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 768, // Mobile breakpoint
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
             ]
         });
 

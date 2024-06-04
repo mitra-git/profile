@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="multiple-items">
                     @foreach($newsImages as $p)
-                    <div class="col-sm-4 py-4 gallery-item">
+                    <div class="col-sm-4 col-lg-4 col-md-6 py-4 gallery-item">
                         <a href="{{env('APP_URL')}}{{$p->image}}" data-lightbox="gallery">
                             <img src="{{env('APP_URL')}}{{$p->image}}"
                                 style="height:20rem!important;width:100%;object-fit:cover" />
@@ -87,7 +87,7 @@
                 <div class="col-sm-12">
                     <div class="row" style="text-align: -webkit-center;">
                         @foreach ($latest_news as $a)
-                        <div class="col-sm-4 py-3">
+                        <div class="col-lg-4 col-sm-4 col-md-6 py-3">
                             <a href="{{ route('news.show', $a->id) }}">
                                 <div class="card" style="width: 20rem; position: relative;">
                                     <div class="image-container" style="position: relative;">
@@ -162,12 +162,19 @@
             autoplaySpeed: 2000,
             responsive: [
                 {
-                    breakpoint: 768, // You can set this to the breakpoint you want for mobile
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
+            breakpoint: 1024, // You can adjust this breakpoint as needed
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 768, // Mobile breakpoint
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
             ]
         });
 

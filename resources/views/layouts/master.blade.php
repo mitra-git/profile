@@ -95,6 +95,32 @@
             padding: 0.5rem 0;
         }
 
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .dropdown-menu {
+                max-width: 100%;
+                left: 10%;
+                border-radius: 5px;
+            }
+
+            .dropdown-menu .dropdown-item {
+                font-size: 1.2rem;
+            }
+
+            .nav-item.dropdown {
+                place-content: flex-start;
+            }
+
+            .navbar-nav .dropdown-menu {
+                position: static;
+                float: left !important;
+                width: 100% !important;
+            }
+
+            .dropdown-menu {
+                transform: none !important;
+            }
+        }
+
         .overlayer {
             position: fixed;
             top: 0;
@@ -175,7 +201,7 @@ use Illuminate\Support\Str;
     <nav class="navbar navbar-expand-lg navbar-light fixed-top pt-4 pb-3" id="mainNav" style="background-color:#f37321">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="/"><img src="{{env('APP_URL')}}{{$information->logo_header}}"
-                    style="max-width:150px;width:140px;" /></a>
+                    style="max-width:120px;width:100px;" /></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 style="border: none" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -206,7 +232,7 @@ use Illuminate\Support\Str;
     <div class="position-fixed bottom-0 end-0 mb-3 me-3" style="z-index: 999">
         <a title="Chat Whatsapp" href="{{$information->link_wa}}" target="_blank"
             class="d-inline-block rounded-full transition-all transform hover:scale-110 hover:rotate-12">
-            <img class="object-cover object-center" style="width:100px;height:100px"
+            <img class="object-cover object-center" style="width:70px;height:70px"
                 src="{{ asset('assets/img/whatsapp.png') }}" alt="Saya mau pesan">
         </a>
     </div>
@@ -238,18 +264,15 @@ use Illuminate\Support\Str;
                             <div class="col-sm-12 px-3 pb-4">
                                 <p class="text-white fw-bold">{{$information->name}}</p>
                                 <table class="table table-borderless" style="border-color: transparent!important;">
-                                    <thead>
-                                        <tr>
-                                            <th style="align-content: center;"><i
-                                                    class="bi bi-geo-alt-fill text-white"></i></th>
-                                            <th class="text-white">{{$information->address}}</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="align-content: center;"><i
+                                            <td class="py-0"><i class="bi bi-geo-alt-fill text-white"></i></td>
+                                            <td class="text-white py-0">{{$information->address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0" style="align-content: center;"><i
                                                     class="bi bi-telephone-fill text-white"></i></td>
-                                            <td class="text-white">{{$information->phone}}</td>
+                                            <td class="text-white py-0">{{$information->phone}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -274,7 +297,7 @@ use Illuminate\Support\Str;
                                 </table>
                             </div>
                         </div>
-                        <div class="col-sm-7 my-5">
+                        <div class="col-sm-7 my-3">
                             <h3 class="text-white fw-bold my-0">Contact Form :</h3>
                             <div class="row" style="place-content: center">
                                 @if(session('success'))
