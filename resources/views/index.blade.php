@@ -161,11 +161,11 @@
             .navbar-nav .dropdown-menu {
                 position: static;
                 float: left !important;
-                width: 100%!important;
+                width: 100% !important;
             }
 
             .dropdown-menu {
-                transform: none!important;
+                transform: none !important;
             }
         }
 
@@ -316,7 +316,8 @@ use Illuminate\Support\Str;
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div data-aos="fade-right" data-aos-duration="1000">
-                                            <h1 class="text-white fw-bold" style="text-transform:uppercase;">{{ $s->title
+                                            <h1 class="text-white fw-bold" style="text-transform:uppercase;">{{
+                                                $s->title
                                                 }}</h1>
                                             <a href="{{ route('news.show', $s->id) }}"
                                                 class="btn btn-bla text-white mt-2"
@@ -454,9 +455,10 @@ use Illuminate\Support\Str;
             <div class="row">
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-sm-5">
-                            <img src="{{env('APP_URL')}}{{$information->logo_header}}" class="p-5" style="width:70%" />
-                            <div class="col-sm-12 px-3 pb-4">
+                        <div class="col-sm-5" style="align-content: center;">
+                            <img src="{{env('APP_URL')}}{{$information->logo_header}}" class="px-3 py-2 my-1"
+                                style="width:50%" />
+                            <div class="col-sm-12 px-3 pb-3">
                                 <p class="text-white fw-bold">{{$information->name}}</p>
                                 <table class="table table-borderless" style="border-color: transparent!important;">
                                     <tbody>
@@ -471,7 +473,7 @@ use Illuminate\Support\Str;
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table class="text-white pb-2">
+                                <table class="text-white pb-1">
                                     <thead>
                                         <tr>
                                             <th>Follow us:</th>
@@ -493,7 +495,7 @@ use Illuminate\Support\Str;
                             </div>
                         </div>
                         <div class="col-sm-7 my-3">
-                            <h3 class="text-white pl-2 pb-0 fw-bold my-0">Contact Form :</h3>
+                            <h5 class="text-white pl-2 pb-0 fw-bold my-0">Contact Form :</h5>
                             <div class="row" style="place-content: center">
                                 @if(session('success'))
                                 <div class="alert alert-success m-2"
@@ -507,26 +509,27 @@ use Illuminate\Support\Str;
                                     {{ session('error') }}
                                 </div>
                                 @endif
-                                <form method="POST" action="{{ route('store-contact') }}" class="row g-3 pt-0 mt-0"
+                                <form method="POST" action="{{ route('store-contact') }}" class="row g-2 pt-2 mt-2"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-lg-12">
                                         <div class="form-floating">
-                                            <input class="form-control" id="name" name="name" type="text"
-                                                placeholder="Enter your Name..." data-sb-validations="required"
-                                                required />
-                                            <label for="name" class="fw-bold" style="color:#495057">Nama</label>
+                                            <input class="form-control form-control-sm" id="name" name="name"
+                                                type="text" placeholder="Enter your Name..."
+                                                data-sb-validations="required" required />
+                                            <label for="name" class="fw-bold"
+                                                style="color:#495057; font-size: small;">Nama</label>
                                             <div class="invalid-feedback" data-sb-feedback="name:required">A name is
                                                 required.</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-floating">
-                                            <input class="form-control" id="handphone" name="handphone" type="phone"
-                                                placeholder="62 987 654 321" data-sb-validations="required,handphone"
-                                                required />
+                                            <input class="form-control form-control-sm" id="handphone" name="handphone"
+                                                type="phone" placeholder="62 987 654 321"
+                                                data-sb-validations="required,handphone" required />
                                             <label for="handphone" class="fw-bold"
-                                                style="color:#495057">Handphone</label>
+                                                style="color:#495057; font-size: small;">Handphone</label>
                                             <div class="invalid-feedback" data-sb-feedback="handphone:required">A
                                                 handphone is required.</div>
                                             <div class="invalid-feedback" data-sb-feedback="handphone:email">Handphone
@@ -535,38 +538,42 @@ use Illuminate\Support\Str;
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-floating">
-                                            <input class="form-control" id="email" name="email" type="email"
-                                                placeholder="example@gmail.com" data-sb-validations="required,email"
-                                                required />
-                                            <label for="email" class="fw-bold" style="color:#495057">Email</label>
-                                            <div class="invalid-feedback" data-sb-feedback="email:required">An
-                                                email is required.</div>
-                                            <div class="invalid-feedback" data-sb-feedback="email:email">Email
-                                                is not valid.</div>
+                                            <input class="form-control form-control-sm" id="email" name="email"
+                                                type="email" placeholder="example@gmail.com"
+                                                data-sb-validations="required,email" required />
+                                            <label for="email" class="fw-bold"
+                                                style="color:#495057; font-size: small;">Email</label>
+                                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is
+                                                required.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not
+                                                valid.</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-floating">
-                                            <input class="form-control" id="subject" name="subject" type="text"
-                                                placeholder="Enter your subject..." data-sb-validations="required"
-                                                required />
-                                            <label for="subject" class="fw-bold" style="color:#495057">Subject</label>
+                                            <input class="form-control form-control-sm" id="subject" name="subject"
+                                                type="text" placeholder="Enter your subject..."
+                                                data-sb-validations="required" required />
+                                            <label for="subject" class="fw-bold"
+                                                style="color:#495057; font-size: small;">Subject</label>
                                             <div class="invalid-feedback" data-sb-feedback="subject:required">A subject
                                                 is required.</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="message" id="message" type="text"
-                                                placeholder="Enter your message here..." style="height: 7rem;"
-                                                data-sb-validations="required" required></textarea>
-                                            <label for="message" class="fw-bold" style="color:#495057">Message</label>
+                                            <textarea class="form-control form-control-sm" name="message" id="message"
+                                                type="text" placeholder="Enter your message here..."
+                                                style="height: 4rem;" data-sb-validations="required"
+                                                required></textarea>
+                                            <label for="message" class="fw-bold"
+                                                style="color:#495057; font-size: small;">Message</label>
                                             <div class="invalid-feedback" data-sb-feedback="message:required">A message
                                                 is required.</div>
                                         </div>
                                     </div>
                                     <div class="col-12 d-grid">
-                                        <button class="btn btn-xl py-2 fw-bold"
+                                        <button class="btn btn-sm py-1 fw-bold"
                                             style="background-color:white;color:#f37321;width:50%" id="submitButton"
                                             type="submit"><span>SEND MESSAGE</span></button>
                                     </div>

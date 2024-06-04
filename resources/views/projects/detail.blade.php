@@ -4,8 +4,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
 
-@section('content')
+<script src='//pchen66.github.io/js/three/three.min.js'></script>
+<script src='//pchen66.github.io/js/panolens/panolens.min.js'></script>
+<?php header('Access-Control-Allow-Origin: *'); ?>
+
 <style>
+    .image-container {
+        height: 40rem;
+    }
+
+    .image-container:before {
+        content: attr(data-image);
+    }
+
     .custom-map {
         width: 500px;
         max-width: 1080px;
@@ -24,9 +35,7 @@
             /* Adjust the height for mobile as needed */
         }
     }
-</style>
 
-<style>
     .lightboxOverlay {
         position: absolute;
         top: 0;
@@ -36,7 +45,10 @@
         filter: alpha(Opacity=80);
         opacity: .8;
         display: none;
+    }
 </style>
+
+@section('content')
 
 <div
     style="height: 50%; min-height: 40%; background-image: url({{env('APP_URL')}}{{$project->header_image}}); background-size: cover;">
@@ -126,42 +138,79 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .side-by-side .gallery-item {
+            display: inline-block;
+            width: 32%;
+            /* Adjust width as needed */
+            vertical-align: top;
+        }
+
+        .side-by-side {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .side-by-side .gallery-item {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+
+    <div class="container pb-5 pt-5 px-0">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="grid grid-cols-6">
+                    <div class='image-container'></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
 
 @section('jquery')
-<!-- Include Slick JavaScript -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<!-- Include Lightbox JavaScript -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            responsive: [
-                {
-            breakpoint: 1024, // You can adjust this breakpoint as needed
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 768, // Mobile breakpoint
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
+        // Check the number of gallery items
+        var galleryItemsCount = $('.gallery-item').length;
+
+        // Initialize Slick slider if there are 3 or more items
+        if (galleryItemsCount >= 3) {
+            $('.multiple-items').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                        breakpoint: 1024, // You can adjust this breakpoint as needed
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768, // Mobile breakpoint
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        } else {
+            // Add 'side-by-side' class if there are fewer than 3 items
+            $('.multiple-items').addClass('side-by-side');
         }
-            ]
-        });
 
         $('.gallery-item a').on('click', function(){
             // Remove the 'active' class from all gallery items
@@ -171,5 +220,24 @@
             $(this).parent().addClass('active');
         });
     });
+</script>
+<script type="text/javascript">
+    const d = document;
+    d.addEventListener('DOMContentLoaded', () => {
+        const viewer = new PANOLENS.Viewer({
+            'container': d.querySelector('.image-container')
+        });
+
+        const images = ['{{asset('assets/img/coba_ges.jpg')}}'];
+
+        viewer.add(new PANOLENS.ImagePanorama(images[0]));
+
+        d.querySelector('button').addEventListener('click', e => {
+            e.target.dataset.index = 1 - e.target.dataset.index;
+            let imgpath = images[Number(e.target.dataset.index)];
+            viewer.dispose();
+            viewer.add(new PANOLENS.ImagePanorama(imgpath));
+        })
+    })
 </script>
 @endsection

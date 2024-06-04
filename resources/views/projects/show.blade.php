@@ -36,6 +36,7 @@
         filter: alpha(Opacity=80);
         opacity: .8;
         display: none;
+    }
 </style>
 
 <div
@@ -81,6 +82,26 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .side-by-side .gallery-item {
+            display: inline-block;
+            width: 32%;
+            /* Adjust width as needed */
+            vertical-align: top;
+        }
+
+        .side-by-side {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .side-by-side .gallery-item {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
 
     <div class="container">
         <div class="row">
@@ -140,30 +161,39 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            responsive: [
-                {
-            breakpoint: 1024, // You can adjust this breakpoint as needed
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 768, // Mobile breakpoint
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
+        // Check the number of gallery items
+        var galleryItemsCount = $('.gallery-item').length;
+
+        // Initialize Slick slider if there are 3 or more items
+        if (galleryItemsCount >= 3) {
+            $('.multiple-items').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                        breakpoint: 1024, // You can adjust this breakpoint as needed
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768, // Mobile breakpoint
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        } else {
+            // Add 'side-by-side' class if there are fewer than 3 items
+            $('.multiple-items').addClass('side-by-side');
         }
-            ]
-        });
 
         $('.gallery-item a').on('click', function(){
             // Remove the 'active' class from all gallery items
