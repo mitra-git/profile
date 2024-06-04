@@ -228,7 +228,7 @@
             'container': d.querySelector('.image-container')
         });
 
-        const images = ['{{env('APP_URL')}}{{$projectType->image_360}}'];
+        const images = ['{{ asset($projectType->image_360) }}'];
 
         viewer.add(new PANOLENS.ImagePanorama(images[0]));
 
