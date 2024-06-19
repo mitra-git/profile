@@ -50,17 +50,16 @@
                         <h2 class="mt-0 fw-bolder">About Java Residence</h2>
                         <hr class="divider divider-black" />
                     </div>
-                    <div class="row gx-4 gx-lg-5">
+                    <div class="row gx-4 gx-lg-5 mx-auto">
                         <div class="col-sm-12">
+                            @if($information->video)
                             <div id="video_container" class="video-responsive">
-                                @if($information->video)
                                 {!! $information->video !!}
-                                @else
-                                <img id="video_display" class="object-contain items-center"
-                                    style="width:20rem;height:10rem;object-fit:cover"
-                                    src="{{ asset('assets/img/no-video.png') }}">
-                                @endif
                             </div>
+                            @else
+                            <img class="object-contain items-center" style="width:100%;height:100%;object-fit:cover"
+                                src="{{env('APP_URL')}}{{$information->image}}">
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-12">

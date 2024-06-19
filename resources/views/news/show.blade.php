@@ -25,7 +25,6 @@
         height: 0;
         overflow: hidden;
         max-width: 100%;
-        background: #000;
     }
 
     .video-responsive iframe {
@@ -41,14 +40,16 @@
     <div class="pb-4" style="padding-top:10rem">
         <div class="container">
             <div class="col-sm-12">
+                @if(!empty ($news->link_video))
                 <div id="video_container" class="video-responsive">
-                    @if($news->link_video)
                     {!! $news->link_video !!}
-                    @else
-                    <img id="video_display" class="object-contain items-center"
-                        style="width:100%;height:100%;object-fit:cover" src="{{ asset('assets/img/no-video.png') }}">
-                    @endif
                 </div>
+                @else
+                <div>
+                    <img class="object-contain items-center" style="width:100%;height:60%;object-fit:cover"
+                        src="{{env('APP_URL')}}{{$news->image}}">
+                </div>
+                @endif
             </div>
             <div class="col-sm-12 pt-5">
                 <div class="text-center mx-auto py-3">

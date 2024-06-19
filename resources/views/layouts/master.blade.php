@@ -281,18 +281,26 @@ use Illuminate\Support\Str;
                                     <thead>
                                         <tr>
                                             <th>Follow us:</th>
+                                            @if(!empty($information->instagram))
                                             <th><a target="_blank" href="{{$information->instagram}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo ig.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->youtube))
                                             <th><a target="_blank" href="{{$information->youtube}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo yt.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->facebook))
                                             <th><a target="_blank" href="{{$information->facebook}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo fb.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->tiktok))
                                             <th><a target="_blank" href="{{$information->tiktok}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo tiktok.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
                                         </tr>
                                     </thead>
                                 </table>

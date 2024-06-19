@@ -346,7 +346,7 @@ use Illuminate\Support\Str;
             </div>
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-6 py-5 py-md-0">
-                    <p class="mb-4" style="text-align: justify">{{$information->description}}</p>
+                    <p class="mb-4" style="text-align: justify">{!! substr($information->description,0,700).'...'!!}</p>
                     <a href="/about" class="btn btn-bla text-white mt-2 mb-4"
                         style="background-color:#f37321;border-radius:0;font-size:15pt">More
                         Info</a>
@@ -357,8 +357,8 @@ use Illuminate\Support\Str;
                         {!! $information->video !!}
                         @else
                         <img id="video_display" class="object-contain items-center"
-                            style="width:20rem;height:10rem;object-fit:cover"
-                            src="{{ asset('assets/img/no-video.png') }}">
+                            style="width:100%;height:auto;object-fit:cover"
+                            src="{{env('APP_URL')}}{{$information->image}}">
                         @endif
                     </div>
                 </div>
@@ -477,18 +477,26 @@ use Illuminate\Support\Str;
                                     <thead>
                                         <tr>
                                             <th>Follow us:</th>
+                                            @if(!empty($information->instagram))
                                             <th><a target="_blank" href="{{$information->instagram}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo ig.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->youtube))
                                             <th><a target="_blank" href="{{$information->youtube}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo yt.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->facebook))
                                             <th><a target="_blank" href="{{$information->facebook}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo fb.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
+                                            @if(!empty($information->tiktok))
                                             <th><a target="_blank" href="{{$information->tiktok}}" class="ml-2"><img
                                                         src="{{asset('assets/img/Logo tiktok.png')}}"
                                                         style="width:60%" /></a></th>
+                                            @endif
                                         </tr>
                                     </thead>
                                 </table>
@@ -511,8 +519,8 @@ use Illuminate\Support\Str;
                                     {{ session('error') }}
                                 </div>
                                 @endif
-                                <form method="POST" action="{{ route('store-contact') }}" class="row g-2 pt-2 mt-2 text-right"
-                                    enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('store-contact') }}"
+                                    class="row g-2 pt-2 mt-2 text-right" enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="form-floating">
