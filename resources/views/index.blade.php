@@ -592,6 +592,11 @@ use Illuminate\Support\Str;
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12">
+                    <div class="text-center text-white py-2">
+                        © {{ date('Y') }} Copyright PT. Mitra Usaha Propertindo All Right reserved
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

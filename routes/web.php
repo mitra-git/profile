@@ -12,17 +12,10 @@ use App\Http\Controllers\AboutController;
 use App\Models\Project;
 use Illuminate\Support\Str;
 
+Route::get('/maintenance', function () {
+    return view('maintenance');
+})->name('maintenance.page');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test-email', [ContactController::class, 'testEmail'])->name('test.email');
